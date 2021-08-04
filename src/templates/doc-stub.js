@@ -8,12 +8,11 @@ import {
   Layout,
   MainContent,
   TableOfContents,
-  TopBar,
   VersionDropdown,
 } from "../components";
 
 export const query = graphql`
-  query ($nodeId: String!, $potentialLatestNodePath: String) {
+  query($nodeId: String!, $potentialLatestNodePath: String) {
     mdx(id: { eq: $nodeId }) {
       fields {
         path
@@ -62,8 +61,13 @@ const determineCanonicalPath = (hasLatest, latestPath) => {
 const DocTemplate = ({ data, pageContext }) => {
   const { fields, body, tableOfContents } = data.mdx;
   const { path, mtime } = fields;
-  const { pagePath, frontmatter, versions, githubFileLink, isIndexPage } =
-    pageContext;
+  const {
+    pagePath,
+    frontmatter,
+    versions,
+    githubFileLink,
+    isIndexPage,
+  } = pageContext;
   const versionArray = makeVersionArray(versions, path);
   const { version } = getProductAndVersion(path);
   const pageMeta = {
@@ -81,7 +85,6 @@ const DocTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout pageMeta={pageMeta} background="white">
-      <TopBar />
       <Container fluid className="p-0 d-flex bg-white">
         <MainContent searchNavLogo={true}>
           <div className="d-flex justify-content-between align-items-center">
