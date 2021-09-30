@@ -127,7 +127,7 @@ to configure PgBouncer. Perform the following steps in addition to those instruc
 ``` text
 
     echo "[databases]" > /etc/edb/pgbouncer1.15/edb-pgbouncer-databases.ini
-    echo "edb= host=srv1" >> /etc/edb/pgbouncer1.15/edb-pgbouncer-databases.ini
+    echo "edb= host=srv1 port=5444" >> /etc/edb/pgbouncer1.15/edb-pgbouncer-databases.ini
     chown enterprisedb: /etc/edb/pgbouncer1.15/edb-pgbouncer-databases.ini
 ```
 
